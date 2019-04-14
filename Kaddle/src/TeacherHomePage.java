@@ -1,5 +1,11 @@
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import kaddle.Kaddle;
 
 /*
@@ -18,7 +24,7 @@ public class TeacherHomePage extends javax.swing.JFrame {
      * Creates new form TeacherHomePage
      */
     
-    public static String uid;
+    public static String uid="203";
     
     public TeacherHomePage() {
         initComponents();
@@ -27,8 +33,7 @@ public class TeacherHomePage extends javax.swing.JFrame {
     public TeacherHomePage(String a) {
         initComponents();
         uid=a;
-        JOptionPane.showMessageDialog(this, uid);
-        
+        //JOptionPane.showMessageDialog(this, uid);
     }
 
     /**
@@ -42,14 +47,15 @@ public class TeacherHomePage extends javax.swing.JFrame {
 
         jMenuItem4 = new javax.swing.JMenuItem();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jMenuItem4.setText("jMenuItem4");
 
@@ -61,24 +67,17 @@ public class TeacherHomePage extends javax.swing.JFrame {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, -1));
 
         jButton1.setText("Add A Course");
+        jButton1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton1FocusGained(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 160, 100));
-
-        jButton2.setText("My Courses");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 180, 160, 100));
-
-        jButton3.setText("Remove Course");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 160, 100));
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 560));
+        jPanel1.add(jButton1);
 
         jButton6.setText("Upload Curriculum");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +85,15 @@ public class TeacherHomePage extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 60, 150, 100));
+        jPanel1.add(jButton6);
+
+        jButton2.setText("My Courses");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2);
 
         jButton5.setText("View Class Details");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -94,10 +101,15 @@ public class TeacherHomePage extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 190, 160, 100));
+        jPanel1.add(jButton5);
 
-        jButton7.setText("Finances");
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 300, 150, 90));
+        jButton3.setText("Remove Course");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3);
 
         jButton8.setText("Support");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -105,7 +117,21 @@ public class TeacherHomePage extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 140, 90));
+        jPanel1.add(jButton8);
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 560));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course ID", "Title "
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, 410, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -141,6 +167,34 @@ public class TeacherHomePage extends javax.swing.JFrame {
             uc.setVisible(true);
             this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton1FocusGained
+                     try {
+                //Class.forName("java.sql.Driver");
+                DefaultTableModel m1 = (DefaultTableModel)jTable1.getModel();
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select act_id, activity.name from activity where prof_id = '"+uid+"'");
+                while(rs.next())
+                {
+                    String b = rs.getString(1);
+                    String c = rs.getString(2);
+                    m1.addRow(new Object[]{b,c});
+                }
+                con.close();
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton1FocusGained
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+                    DeleteCourseTeacher dcp = new DeleteCourseTeacher();
+                    dcp.setVisible(true);
+                    this.dispose();
+                    
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,10 +237,11 @@ public class TeacherHomePage extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

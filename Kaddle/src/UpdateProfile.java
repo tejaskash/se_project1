@@ -14,7 +14,7 @@ public class UpdateProfile extends javax.swing.JFrame {
     /**
      * Creates new form UpdateProfile
      */
-    public static String uid="101";
+    public static String uid;
     public UpdateProfile() {
         initComponents();
         jPanel1.setVisible(false);
@@ -22,6 +22,7 @@ public class UpdateProfile extends javax.swing.JFrame {
     
     public UpdateProfile(String a)
     {
+        initComponents();
         uid = a;
         jPanel1.setVisible(false);
     }

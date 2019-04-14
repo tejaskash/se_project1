@@ -141,7 +141,7 @@ public class Enroll extends javax.swing.JFrame {
             DefaultListModel m1 = (DefaultListModel) jList1.getModel();
             m1.removeAllElements();
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
             Statement stmt = con.createStatement();
             String q1 = "select name from activity;";
             ResultSet rs = stmt.executeQuery(q1);
@@ -162,7 +162,7 @@ public class Enroll extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
                 Class.forName("java.sql.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Kaddle", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
                 Statement stmt = con.createStatement();
                 String q1="Select act_id from activity where name='"+jList1.getSelectedValue()+"';";
                 ResultSet rs= stmt.executeQuery(q1);
@@ -192,7 +192,7 @@ public class Enroll extends javax.swing.JFrame {
             //jTextField3.setText("");
             //DefaultListModel m1 = (DefaultListModel) jList1.getModel();
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
             Statement stmt = con.createStatement();
             String val = (String) jList1.getSelectedValue();
             String q1 = "select cost,duration from activity where name='" + val + "';";

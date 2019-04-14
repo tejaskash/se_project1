@@ -1,5 +1,11 @@
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import kaddle.Kaddle;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,7 +23,7 @@ public class MajorHomePage extends javax.swing.JFrame {
      * Creates new form MajorHomePage
      */
     
-    public static String uid;
+    public static String uid="101";
     
     public MajorHomePage() {
         initComponents();
@@ -37,16 +43,22 @@ public class MajorHomePage extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("Review");
+        jButton2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton2FocusGained(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -54,21 +66,18 @@ public class MajorHomePage extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 160, 110));
 
-        jButton3.setText("View Enrolled Classes");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+        jButton4.setText("Enroll");
+        jButton4.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton4FocusGained(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 180, 140));
-
-        jButton4.setText("Enroll");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 180, 120));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 180, 120));
 
         jButton1.setText("Update Profile");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +98,28 @@ public class MajorHomePage extends javax.swing.JFrame {
         jLabel1.setText("delete this label,for testing purpose only, sorry");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Course ID", "Title"
+            }
+        ));
+        jTable1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTable1FocusGained(evt);
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 310, 230));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -98,12 +129,6 @@ public class MajorHomePage extends javax.swing.JFrame {
                 rp.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-                ViewEnrolled ve = new ViewEnrolled();
-                this.dispose();
-                ve.setVisible(true);// TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
                 Enroll en=  new Enroll(uid);
@@ -112,9 +137,10 @@ public class MajorHomePage extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                    this.dispose();
+                    
                     UpdateProfile up = new UpdateProfile(uid);
                     up.setVisible(true);
+                    this.dispose();
                     // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -125,6 +151,74 @@ public class MajorHomePage extends javax.swing.JFrame {
                 Kaddle.WhereFrom = 'M';
                 this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTable1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTable1FocusGained
+         try {
+                //Class.forName("java.sql.Driver");
+                DefaultTableModel m1 = (DefaultTableModel)jTable1.getModel();
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select act_id, name from participating natural join activity where user_id = '"+uid+"'");
+                while(rs.next())
+                {
+                    String b = rs.getString(1);
+                    String c = rs.getString(2);
+                    m1.addRow(new Object[]{b,c});
+                }
+                con.close();
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jTable1FocusGained
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+
+          try {
+                //Class.forName("java.sql.Driver");
+                DefaultTableModel m1 = (DefaultTableModel)jTable1.getModel();
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select act_id, name from participating natural join activity where user_id = '"+uid+"'");
+                while(rs.next())
+                {
+                    String b = rs.getString(1);
+                    String c = rs.getString(2);
+                    m1.addRow(new Object[]{b,c});
+                }
+                con.close();
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton2FocusGained
+         
+    }//GEN-LAST:event_jButton2FocusGained
+
+    private void jButton4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton4FocusGained
+         try {
+                //Class.forName("java.sql.Driver");
+                DefaultTableModel m1 = (DefaultTableModel)jTable1.getModel();
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select act_id, name from participating natural join activity where user_id = '"+uid+"'");
+                while(rs.next())
+                {
+                    String b = rs.getString(1);
+                    String c = rs.getString(2);
+                    m1.addRow(new Object[]{b,c});
+                }
+                con.close();
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_jButton4FocusGained
 
     /**
      * @param args the command line arguments
@@ -164,9 +258,10 @@ public class MajorHomePage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.sql.*;
+import javax.swing.JOptionPane;
 /**
  *
  * @author tejas
@@ -13,10 +14,19 @@ public class UpdateProfile extends javax.swing.JFrame {
     /**
      * Creates new form UpdateProfile
      */
+    public static String uid="101";
     public UpdateProfile() {
         initComponents();
         jPanel1.setVisible(false);
     }
+    
+    public UpdateProfile(String a)
+    {
+        uid = a;
+        jPanel1.setVisible(false);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,23 +40,25 @@ public class UpdateProfile extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Address");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, -1, -1));
 
         jButton1.setText("Change Password");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -54,15 +66,9 @@ public class UpdateProfile extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTextField4.setText("jTextField1");
-        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
-
-        jTextField5.setText("jTextField1");
-        jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jLabel2.setText("Old Password");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
@@ -71,24 +77,41 @@ public class UpdateProfile extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jButton2.setText("Change");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, -1, -1));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
+        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 130, -1));
+        jPanel1.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 130, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 240, 420));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 190, 420));
 
-        jTextField1.setText("jTextField1");
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, -1, -1));
+        jTextField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTextField2FocusGained(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 160, -1));
 
-        jTextField2.setText("jTextField1");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, -1));
-
-        jTextField3.setText("jTextField1");
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, -1, -1));
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 160, -1));
 
         jLabel4.setText("Email: ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         jLabel5.setText("Phone: ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         jButton3.setText("<");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -97,6 +120,20 @@ public class UpdateProfile extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 160, -1));
+
+        jButton4.setText("Save Changes");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -112,6 +149,79 @@ public class UpdateProfile extends javax.swing.JFrame {
         jPanel1.setVisible(true);
        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusGained
+        try {
+                //Class.forName("java.sql.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                ResultSet rs = stmt.executeQuery("select phone,email,address from user where user_id ='"+uid+"'");
+                rs.next();
+                jTextField2.setText(rs.getString(1));
+                jTextField3.setText(rs.getString(2));
+                jTextArea1.setText(rs.getString(3));
+                con.close();
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e);
+        } 
+    }//GEN-LAST:event_jTextField2FocusGained
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                
+                if(jPasswordField1.getPassword().equals(jPasswordField2.getPassword()))
+                {
+                try{
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                String pwd = new String(jPasswordField1.getPassword());
+                stmt.executeUpdate("update user set password = '"+pwd+"' where user_id = '"+uid+"'");
+                JOptionPane.showMessageDialog(rootPane,"Password Changed","",JOptionPane.ERROR_MESSAGE);
+                }
+                catch(SQLException e)
+                {
+                    System.out.println(e);
+                }     
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(rootPane,"Passwords Do Not Match","",JOptionPane.WARNING_MESSAGE);
+                }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+                try{
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate("update user set phone = '"+jTextField2.getText()+"' where user_id = '"+uid+"'");
+                stmt.executeUpdate("update user set email = '"+jTextField3.getText()+"' where user_id = '"+uid+"'");
+                stmt.executeUpdate("update user set address = '"+jTextArea1.getText()+"' where user_id = '"+uid+"'");
+                JOptionPane.showMessageDialog(rootPane,"Detials Updated","",JOptionPane.ERROR_MESSAGE);
+                con.close();
+                }
+                catch(SQLException e)
+                {
+                    System.out.println(e);
+                }     
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        char ch = evt.getKeyChar();
+        if (!Character.isDigit(ch)) {
+            evt.consume();
+        }
+        String st = jTextField2.getText();
+        int l = st.length();
+        if (l >= 10) {
+            evt.consume();
+            JOptionPane.showMessageDialog(this, "Maximum 10 digits Allowed");
+        }
+    }//GEN-LAST:event_jTextField2KeyTyped
 
     /**
      * @param args the command line arguments
@@ -152,16 +262,18 @@ public class UpdateProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

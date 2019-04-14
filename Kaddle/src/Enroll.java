@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author MAHE
@@ -21,15 +20,15 @@ public class Enroll extends javax.swing.JFrame {
     /**
      * Creates new form Enroll
      */
-    
-    public static String uid;
+    public static String uid="101";
+
     public Enroll() {
         initComponents();
     }
-    
+
     public Enroll(String a) {
         initComponents();
-        uid=a;
+        uid = a;
     }
 
     /**
@@ -137,23 +136,24 @@ public class Enroll extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jList1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jList1FocusGained
-                try {
+        try {
+            
+            
             DefaultListModel m1 = (DefaultListModel) jList1.getModel();
             m1.removeAllElements();
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "");
             Statement stmt = con.createStatement();
             String q1 = "select name from activity;";
             ResultSet rs = stmt.executeQuery(q1);
             while (rs.next()) {
                 m1.addElement(rs.getString(1));
             }
-            
-            
+
             if (m1.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "There Are No Activities available at the Moment");
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -161,38 +161,67 @@ public class Enroll extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-                Class.forName("java.sql.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
-                Statement stmt = con.createStatement();
-                String q1="Select act_id from activity where name='"+jList1.getSelectedValue()+"';";
-                ResultSet rs= stmt.executeQuery(q1);
+            Class.forName("java.sql.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Kaddle", "root", "");
+            Statement stmt = con.createStatement();
+            String q1 = "Select act_id from activity where name='" + jList1.getSelectedValue() + "';";
+            ResultSet rs = stmt.executeQuery(q1);
+            rs.next();
+            String aid = rs.getString(1);
+            String q2 = "Select * from participating where act_id='" + aid + "' and user_id='" + uid + "';";
+            rs = stmt.executeQuery(q2);
+            if (rs.next()) {
+                JOptionPane.showMessageDialog(this, "You have already registered for this activity");
+            } else {
+                String q4 = "select type from user where user_id='" + uid + "';";
+                rs = stmt.executeQuery(q4);
                 rs.next();
-                String aid=rs.getString(1);
-                String q2="Select * from participating where act_id='"+aid+"' and user_id='"+uid+"';";
-                if(rs.next())
-                    JOptionPane.showMessageDialog(this,"You have already registered for this activity");
-                else
-                {
-                String q3="insert into participating values('"+uid+"','"+aid+"')";
-                stmt.executeUpdate(q3);
-                JOptionPane.showMessageDialog(this, "Successfully Inserted");
+                if (rs.getString(1).equals("Minor")) {
+                    String p_pass = JOptionPane.showInputDialog(this, "To confirm that you are booking this course under the supervision of your parent, please ask him/her to Enter their password");
+                    String q5 = "select password from user where user_id=(select parent_id from user where user_id='" + uid + "') ;";
+                    rs = stmt.executeQuery(q5);
+                    rs.next();
+                    if (rs.getString(1).equals(p_pass)) {
+                        String q3 = "insert into participating values('" + uid + "','" + aid + "');";
+                        stmt.executeUpdate(q3);
+                        //JOptionPane.showMessageDialog(this, "Successfully Inserted");
+                        PaymentsPage pp = new PaymentsPage(jTextField1.getText());
+                        pp.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "The Password entered is incorrect");
+                    }
+                } else {
+                    String q3 = "insert into participating values('" + uid + "','" + aid + "');";
+                    stmt.executeUpdate(q3);
+                    //JOptionPane.showMessageDialog(this, "Successfully Inserted");
+                    PaymentsPage pp = new PaymentsPage(jTextField1.getText());
+                    pp.setVisible(true);
+
                 }
-                
-        }
-         catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
             }
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jList1.clearSelection();
+            jButton1.setEnabled(false);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jList1.clearSelection();
+            jButton1.setEnabled(false);
+        }
+        jList1.grabFocus();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
         // TODO add your handling code here:
-        
-        
+
         try {
             //jTextField3.setText("");
             //DefaultListModel m1 = (DefaultListModel) jList1.getModel();
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kaddle", "root", "@spireE1");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "");
             Statement stmt = con.createStatement();
             String val = (String) jList1.getSelectedValue();
             String q1 = "select cost,duration from activity where name='" + val + "';";

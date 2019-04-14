@@ -21,7 +21,7 @@ public class ReviewPage extends javax.swing.JFrame {
     public ReviewPage() {
         initComponents();
     }
-    public ReviewPage(string a)
+    public ReviewPage(String a)
     {
         uid = a;
     }

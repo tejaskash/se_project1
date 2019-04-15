@@ -40,36 +40,158 @@ public class Enroll extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jTextField3 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jButton1 = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+
+        jPanel2.setBackground(new java.awt.Color(36, 47, 65));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("LOGIN");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, -1, -1));
+
+        jSeparator5.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 130, 40));
+
+        jTextField3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 240, -1));
+
+        jPasswordField1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 240, -1));
+
+        jButton2.setBackground(new java.awt.Color(97, 212, 195));
+        jButton2.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Login");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 120, 50));
+
+        jLabel5.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setText("PASSWORD");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel8.setText("USER ID");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, -1, -1));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Select an Activity");
+        jPanel3.setBackground(new java.awt.Color(97, 212, 195));
+        jPanel3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel3MouseDragged(evt);
+            }
+        });
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Cost");
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+
+        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 440, 170, 10));
+
+        jSeparator3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 260, 10));
+
+        jLabel13.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
+
+        jLabel14.setFont(new java.awt.Font("Century Gothic", 1, 36)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("COURSES");
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 160, 40));
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("BACK");
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 2));
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clicked(evt);
+            }
+        });
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/enrollment.png"))); // NOI18N
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 71, 320, 270));
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 470));
+
+        jPanel4.setBackground(new java.awt.Color(36, 47, 65));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 1, 30)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("ENROLL");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, -1, -1));
+
+        jSeparator6.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 130, 40));
+
+        jLabel10.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setText("DURATION (WEEKS)");
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setText("COST");
+        jPanel4.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
+        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 141, -1));
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-
-        jLabel3.setText("Duration(No_of_weeks)");
-
-        jButton1.setText("Enroll");
-        jButton1.setEnabled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 290, 141, -1));
 
         jList1.setModel(new DefaultListModel());
         jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -85,48 +207,26 @@ public class Enroll extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jList1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                        .addComponent(jTextField2))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(278, 278, 278))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(166, 166, 166)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43)
-                        .addComponent(jLabel3))
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(124, 124, 124))
-        );
+        jPanel4.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 153, -1));
+
+        jButton1.setBackground(new java.awt.Color(97, 212, 195));
+        jButton1.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Enroll");
+        jButton1.setEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 130, 50));
+
+        jLabel15.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel15.setText("SELECT AN ACTIVITY");
+        jPanel4.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, 390, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -142,7 +242,7 @@ public class Enroll extends javax.swing.JFrame {
             DefaultListModel m1 = (DefaultListModel) jList1.getModel();
             m1.removeAllElements();
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "@spireE1");
             Statement stmt = con.createStatement();
             String q1 = "select name from activity;";
             ResultSet rs = stmt.executeQuery(q1);
@@ -162,7 +262,7 @@ public class Enroll extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Kaddle", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/Kaddle", "root", "@spireE1");
             Statement stmt = con.createStatement();
             String q1 = "Select act_id from activity where name='" + jList1.getSelectedValue() + "';";
             ResultSet rs = stmt.executeQuery(q1);
@@ -221,7 +321,7 @@ public class Enroll extends javax.swing.JFrame {
             //jTextField3.setText("");
             //DefaultListModel m1 = (DefaultListModel) jList1.getModel();
             Class.forName("java.sql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "@spireE1");
             Statement stmt = con.createStatement();
             String val = (String) jList1.getSelectedValue();
             String q1 = "select cost,duration from activity where name='" + val + "';";
@@ -235,6 +335,148 @@ public class Enroll extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_jList1MouseClicked
+
+    private void jPanel3MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MouseDragged
+
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        // TODO add your handling code here:
+        char ch = evt.getKeyChar();
+        if (!Character.isDigit(ch)) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (jTextField1.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please Enter a User ID", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (jPasswordField1.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please Enter a Password", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+            try {
+                Class.forName("java.sql.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "@spireE1");
+                Statement stmt = con.createStatement();
+                String q1 = "";
+                if (jTextField1.getText().charAt(0) == '1') {
+                    q1 = "select password,Type from user where user_id='" + jTextField1.getText() + "';";
+                    ResultSet rs = stmt.executeQuery(q1);
+
+                } else if (jTextField1.getText().charAt(0) == '2') {
+                }
+                if (!(jTextField1.getText().charAt(0) == '2' || jTextField1.getText().charAt(0) == '1')) {
+                    JOptionPane.showMessageDialog(this, "Incorrect Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    if (jTextField1.getText().charAt(0) == '1') {
+                        q1 = "select password,Type from user where user_id='" + jTextField1.getText() + "';";
+                    } else if (jTextField1.getText().charAt(0) == '2') {
+                        q1 = "select password from teacher where prof_id='" + jTextField1.getText() + "';";
+                    }
+
+                    ResultSet rs = stmt.executeQuery(q1);
+                    //rs.next();
+                    if (!(rs.next())) {
+                        JOptionPane.showMessageDialog(this, "Incorrect User_ID", "Error", JOptionPane.ERROR_MESSAGE);
+                        jTextField1.setText("");
+                        jPasswordField1.setText("");
+                    } else {
+                        if (!(rs.getString(1).equals(jPasswordField1.getText()))) {
+                            JOptionPane.showMessageDialog(this, "Incorrect Password", "Error", JOptionPane.ERROR_MESSAGE);
+                            jTextField1.setText("");
+                            jPasswordField1.setText("");
+                        } else {
+                            //Achtung!! Remove the line below:
+                            JOptionPane.showMessageDialog(this, "Login Successful");
+
+                            if (jTextField1.getText().charAt(0) == '1') {
+                                if (rs.getString(2).equals("Major")) {
+                                    new MajorHomePage().setVisible(true);
+                                } else if (rs.getString(2).equals("Minor")) {
+                                    new MinorHomePage().setVisible(true);
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Incorrect Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+                                }
+                                this.dispose();
+                            } else if (jTextField1.getText().charAt(0) == '2') {
+                                new TeacherHomePage(jTextField1.getText()).setVisible(true);
+                                this.dispose();
+                            }
+                        }
+                    }
+
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        //
+        //Feel free to delete the code below
+        //
+        /*if (jTextField1.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please Enter a User ID", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else if (jPasswordField1.getText().length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please Enter a Password", "Warning", JOptionPane.WARNING_MESSAGE);
+        } else {
+
+            try {
+                Class.forName("java.sql.Driver");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost/kaddle", "root", "");
+                Statement stmt = con.createStatement();
+                String q1="";
+                if (jTextField1.getText().charAt(0) == '1')
+                q1 = "select password,Type from user where user_id='" + jTextField1.getText() + "';";
+                else if (jTextField1.getText().charAt(0) == '2')
+                q1 = "select password from teacher where prof_id='" + jTextField1.getText() + "';";
+
+                ResultSet rs = stmt.executeQuery(q1);
+                //rs.next();
+                if (!(rs.next())) {
+                    JOptionPane.showMessageDialog(this, "Incorrect User_ID", "Error", JOptionPane.ERROR_MESSAGE);
+                    jTextField1.setText("");
+                    jPasswordField1.setText("");
+                } else {
+                    if (!(rs.getString(1).equals(jPasswordField1.getText()))) {
+                        JOptionPane.showMessageDialog(this, "Incorrect Password", "Error", JOptionPane.ERROR_MESSAGE);
+                        jTextField1.setText("");
+                        jPasswordField1.setText("");
+                    } else {
+                        //Achtung!! Remove the line below:
+                        JOptionPane.showMessageDialog(this, "Login Successful");
+
+                        if (jTextField1.getText().charAt(0) == '1') {
+                            if (rs.getString(2).equals("Major")) {
+                                new MajorHomePage().setVisible(true);
+                            } else if (rs.getString(2).equals("Minor")) {
+                                new MinorHomePage().setVisible(true);
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Incorrect Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+                            }
+                            this.dispose();
+                        } else if (jTextField1.getText().charAt(0) == '2') {
+                            new TeacherHomePage().setVisible(true);
+                            this.dispose();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Incorrect Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                    }
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+            }
+        }*/
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void clicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clicked
+        // TODO add your handling code here:
+        new MajorHomePage().setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_clicked
 
     /**
      * @param args the command line arguments
@@ -273,12 +515,32 @@ public class Enroll extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
